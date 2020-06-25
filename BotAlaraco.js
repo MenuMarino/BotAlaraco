@@ -4,6 +4,7 @@ const { prefix, token } = require('./config.json');
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
+const cooldowns = new Discord.Collection();
 
 const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
@@ -16,7 +17,7 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
-//TODO: Cooldowns, YouTube, Spotify?, reaccionar a ciertas interacciones
+//TODO: Cooldowns, YouTube, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
 
 client.on('message', message => {
     if (message.author.bot)
@@ -24,29 +25,59 @@ client.on('message', message => {
     
     //En caso alguien diga algo potencialmente alaraco.
     console.log(message.content)
-    if (message.content.toLowerCase().includes('hola') || message.content.toLowerCase().includes('habla')){
-        var answers = ['Habla ps chivo', 'No', 'En questas', 'Hola ps homoSEXual']
-        var answer = answers[Math.floor(Math.random() * answers.length)];
-        console.log(answer);
-        message.channel.send(answer);
+    if (!message.content.startsWith('$')) {
+        if (message.content.toLowerCase().includes('hola') || message.content.toLowerCase().includes('habla') || message.content.toLowerCase().includes('oe')){
+            var answers = ['Habla ps chivo', 'No', 'En questas', 'Hola ps homoSEXual']
+            var answer = answers[Math.floor(Math.random() * answers.length)];
+            console.log(answer);
+            message.channel.send(answer);
+        }
     }
 
     //Comandos
+    //Si llega hasta aqui, el texto DEBE empezar con $
+    if (!message.content.startsWith('$')) {
+        return;
+    }
+
 	const args = message.content.slice(prefix.length).split(/ +/);
 	const commandName = args.shift().toLowerCase();
 
     const command = client.commands.get(commandName)
     || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
+    if (!command) {
+    	message.reply('Usa help oe cagada');
+    	return;
+	}
+
     // Si el comando es enviado en DM y solo es para servers
     if (command.guildOnly && message.channel.type !== 'text') {
 		return message.reply('DMs no papi, quizás en un server');
 	}
 
-    if (!command) {
-    	message.reply('Usa help oe cagada');
-    	return;
-	}
+    //Cooldown stuff
+    if (!cooldowns.has(command.name)) {
+        cooldowns.set(command.name, new Discord.Collection());
+    }
+
+    const now = Date.now();
+    const timestamps = cooldowns.get(command.name);
+    const cooldownAmount = (command.cooldown || 3) * 1000;
+
+    if (timestamps.has(message.author.id)) {
+        if (timestamps.has(message.author.id)) {
+            const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
+        
+            if (now < expirationTime) {
+                const timeLeft = (expirationTime - now) / 1000;
+                return message.reply(`Espera p bellaco. (Tiempo restante ${timeLeft.toFixed(1)})`);
+            }
+        }
+    }
+    timestamps.set(message.author.id, now);
+    setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
+    //Cooldown end
 
 	try {
 		command.execute(message, args);
