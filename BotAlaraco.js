@@ -15,6 +15,14 @@ client.on('message', async message => {
         message.channel.send(`hola ps homoSEXual.`)
     }
 
+    if (message.content.toLowerCase().includes('$ano')) {
+    	message.channel.send(`https://i.imgur.com/cpGwCdE.png\nhttps://i.imgur.com/cUbWo5Y.png\nhttps://i.imgur.com/6UHqMtD.png\nhttps://i.imgur.com/Mwyi2i5.png`)
+    }
+
+    if (message.content.toLowerCase().includes('$ping')) {
+    	message.channel.send(`Ping ${client.latency * 1000} ms`)
+    }
+
 });
 
 client.login(token);
