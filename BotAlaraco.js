@@ -16,6 +16,8 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
+//TODO: Cooldowns, YouTube, Spotify?, reaccionar a ciertas interacciones
+
 client.on('message', message => {
     if (message.author.bot)
         return;
