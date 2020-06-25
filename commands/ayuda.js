@@ -1,6 +1,7 @@
 module.exports = {
     name: 'ayuda',
     description: 'Preguntale al bot, el lo sabe todo',
+    guildOnly: false,
     execute(message, args) {
         if (args.length === 0) {
             console.log('No pregunta');

@@ -34,15 +34,23 @@ client.on('message', message => {
 	const commandName = args.shift().toLowerCase();
 
     const command = client.commands.get(commandName)
-                    || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
+    || client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(commandName));
 
-    if (!command) return;
+    // Si el comando es enviado en DM y solo es para servers
+    if (command.guildOnly && message.channel.type !== 'text') {
+		return message.reply('DMs no papi, quizás en un server');
+	}
+
+    if (!command) {
+    	message.reply('Usa help oe cagada');
+    	return;
+	}
 
 	try {
 		command.execute(message, args);
 	} catch (error) {
 		console.error(error);
-		message.reply('there was an error trying to execute that command!');
+		message.reply('Hubo un error con tu mierda');
 	}
 
 });
