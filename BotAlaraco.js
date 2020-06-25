@@ -54,7 +54,6 @@ client.on('message', message => {
 		console.error(error);
 		message.reply('Hubo un error con tu mierda');
 	}
-
 });
 
 client.login(token);

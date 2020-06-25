@@ -1,7 +1,5 @@
 # Bot Alaraco
-
 Bot alaraco para mi y los panas
-
 
 ## Contenido
 El prefijo que se requiere para ejecutar un comando es **$**.
