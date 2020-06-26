@@ -26,11 +26,24 @@ client.on('message', message => {
     //En caso alguien diga algo potencialmente alaraco.
     console.log(message.content)
     if (!message.content.startsWith('$')) {
-        if (message.content.toLowerCase().includes('hola') || message.content.toLowerCase().includes('habla') || message.content.toLowerCase().includes('oe')){
+        var m = message.content.toLowerCase();
+        if (m.includes('hola') || m.includes('habla') || m == 'oe'){
             var answers = ['Habla ps chivo', 'No', 'En questas', 'Hola ps homoSEXual']
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
+        } else if (m.includes('big mac') || m.includes('bigmac')) {
+            // Hay un error pero no se rompe el bot
+            message.react('🍔')
+                .then(console.log)
+                .catch(console.error);
+            message.channel.send('Ese alaraco');
+        }
+        
+        if (m.includes('alaraco')) {
+            message.react('🇦🇱')
+                .then(console.log)
+                .catch(console.error);
         }
     }
 
