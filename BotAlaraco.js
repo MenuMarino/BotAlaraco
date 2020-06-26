@@ -20,15 +20,15 @@ client.once('ready', () => {
 //TODO: Cooldowns, YouTube, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
 
 client.on('message', message => {
-    if (message.author.bot)
+    if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
         return;
-    
+
     //En caso alguien diga algo potencialmente alaraco.
     console.log(message.content)
     if (!message.content.startsWith('$')) {
         var m = message.content.toLowerCase();
         if (m.includes('hola') || m.includes('habla') || m == 'oe'){
-            var answers = ['Habla ps chivo', 'No', 'En questas', 'Hola ps homoSEXual']
+            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual']
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
