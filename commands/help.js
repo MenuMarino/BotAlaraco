@@ -3,6 +3,8 @@ const { prefix } = require('../config.json');
 module.exports = {
 	name: 'help',
 	description: 'Todos los comandos',
+    guildOnly: false,
+    cooldown: 2,
 	aliases: ['commands'],
 	execute(message, args) {
 		const data = [];
