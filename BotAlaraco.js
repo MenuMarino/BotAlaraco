@@ -17,7 +17,7 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
-//TODO: Cooldowns, YouTube, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
+//TODO: YouTube, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
 
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
@@ -40,6 +40,14 @@ client.on('message', message => {
             message.channel.send('Ese alaraco');
         }
         
+        // Hay un error pero no se rompe el bot
+        if (m.includes('linasty')) {
+            message.react('💦')
+                .then( () => message.react('🧦') )
+                .then(console.log)
+                .catch(console.error);
+        }
+
         if (m.includes('alaraco')) {
             message.react('🇦🇱')
                 .then(console.log)
