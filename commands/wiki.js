@@ -4,7 +4,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: 'wiki',
-    description: 'Articulo de wikipedia. Primer argumento (EN o ES) el lenguaje de la busqueda. Los siguientes son el titulo.',
+    description: 'Articulo de wikipedia. Primer argumento (EN o ES) el lenguaje de la busqueda. Los siguientes son el titulo. Tope de 2000 caracteres.',
     guildOnly: false,
     cooldown: 2,
     execute(message, args) {
@@ -31,7 +31,7 @@ module.exports = {
 		};
 
     	var url1 = "wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&prop=extracts&gsrsearch=";
-    	var url2 = "&gsrlimit=5&exintro=1&explaintext=1&exlimit=50";
+    	var url2 = "&gsrlimit=5&exintro=1&explaintext=1&exlimit=50&exchars=2000";
 
     	var finalUrl = lang + url1 + args[1] + url2;
 
