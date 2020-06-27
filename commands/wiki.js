@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 
 module.exports = {
     name: 'wiki',
-    description: 'Articulo de wikipedia. Primer argumento (EN o ES) el lenguaje de la busqueda. Los siguientes son el titulo. Tope de 2000 caracteres.',
+    description: 'Articulo de wikipedia. Primer argumento el lenguaje de la búsqueda (EN = inglés, ES = español, etc.). Los siguientes conforman el titulo.',
     guildOnly: false,
     cooldown: 2,
     execute(message, args) {
@@ -11,15 +11,7 @@ module.exports = {
     		message.channel.send("Usa $help wiki. BELLACO");
     		return;
     	}
-    	var lang = "";
-
-    	if (args[0].toLowerCase() == 'en') {
-    		lang += "https://en.";
-    	} else if (args[0].toLowerCase() == 'es') {
-    		lang += "https://es.";
-    	} else {
-    		message.channel.send("Solo funciona EN y ES ps bellaco no soy poliglota.");
-    	}
+    	var lang = "https://" + args[0].toLowerCase();
 
     	var params = {
 		    action: "query",
@@ -28,14 +20,16 @@ module.exports = {
 		    rnlimit: "5"
 		};
 
-    	var url1 = "wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&prop=extracts&gsrsearch=";
+    	var url1 = ".wikipedia.org/w/api.php?action=query&format=json&origin=*&generator=search&prop=extracts&gsrsearch=";
     	var url2 = "&gsrlimit=5&exintro=1&explaintext=1&exlimit=50&exchars=2000";
 
     	var finalUrl = lang + url1;
 
     	// Titulo
     	for (var i = 1; i < args.length; ++i) {
-    		finalUrl += args[i] + " ";
+    		finalUrl += args[i];
+    		if (i != args.length - 1)
+    			finalUrl += "%20";
     	}
 
     	finalUrl += url2;
@@ -58,6 +52,10 @@ module.exports = {
 		        	}
 		        }
 		    })
-		    .catch(function(error){console.log(error);});
+		    .catch(function(error){
+		    	message.channel.send("Hubo un error con tu consulta. (Probablemente el lenguaje)");
+		    	message.channel.send("https://imgur.com/nYHZZbR");
+		    	console.log(error);
+		    });
 	},
 };
