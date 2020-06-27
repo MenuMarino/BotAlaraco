@@ -12,7 +12,7 @@ module.exports = {
         }
 
         if (args.length === 0) {
-            message.channel.send('Se necesita un link ps bellaco');
+            message.channel.send('Se necesita un link de YouTube ps bellaco');
             return;
         }
 
