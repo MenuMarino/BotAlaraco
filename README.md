@@ -14,3 +14,4 @@ El prefijo que se requiere para ejecutar un comando es **$**.
 |   moneda |    Tira una moneda.
 |   ping   |    Muestra el ping del bot.
 |	wiki   |	Te envia el resumen de una búsqueda específica. Usa `$help wiki` para saber como usarlo.
+|	play   |	Reproduce un video de youtube dado un URL.
