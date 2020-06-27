@@ -22,7 +22,7 @@ module.exports = {
         const command = commands.get(name) || commands.find(c => c.aliases && c.aliases.includes(name));
         
         if (!command) {
-            return message.reply('No sabes leer/escribir ctm');
+            return message.reply('No sabes escribir ctm');
         }
         
         data.push(`**Name:** ${command.name}`);
