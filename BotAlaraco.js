@@ -17,7 +17,7 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
-//TODO: WIKIPEDIA, YouTube texto, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
+//TODO: YouTube texto, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
 
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
