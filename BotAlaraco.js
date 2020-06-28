@@ -17,8 +17,13 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
-//TODO: YouTube texto, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
-
+/* TODO:
+	YouTube texto
+	Spotify
+	Bug al reaccionar a ciertos comentarios
+	Comando $hydra "arg1" "arg2" "arg3" (Enviar a hydra esos args y que los reproduzca)
+	I NEED MORE IDEAS
+*/
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
         return;
@@ -33,14 +38,12 @@ client.on('message', message => {
             console.log(answer);
             message.channel.send(answer);
         } else if (m.includes('big mac') || m.includes('bigmac')) {
-            // Hay un error pero no se rompe el bot
             message.react('🍔')
                 .then(console.log)
                 .catch(console.error);
             message.channel.send('Ese alaraco');
         }
-        
-        // Hay un error pero no se rompe el bot
+
         if (m.includes('linasty')) {
             message.react('💦')
                 .then( () => message.react('🧦') )
@@ -57,7 +60,7 @@ client.on('message', message => {
 
     //Comandos
     //Si llega hasta aqui, el texto DEBE empezar con $
-    if (!message.content.startsWith('$')) {
+    if (!message.content.startsWith(prefix)) {
         return;
     }
 
@@ -89,7 +92,7 @@ client.on('message', message => {
     if (timestamps.has(message.author.id)) {
         if (timestamps.has(message.author.id)) {
             const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-        
+
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(`Espera p bellaco. (Tiempo restante ${timeLeft.toFixed(1)})`);
