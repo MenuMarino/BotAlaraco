@@ -17,8 +17,6 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
-console.log('Bellaqueo');
-
 /* TODO:
 	YouTube texto
 	Spotify
@@ -62,7 +60,7 @@ client.on('message', message => {
 
     //Comandos
     //Si llega hasta aqui, el texto DEBE empezar con $
-    if (!message.content.startsWith('$')) {
+    if (!message.content.startsWith(prefix)) {
         return;
     }
 
