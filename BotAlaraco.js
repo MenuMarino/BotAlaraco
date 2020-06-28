@@ -17,6 +17,8 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 });
 
+console.log('Bellaqueo');
+
 //TODO: YouTube texto, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
 
 client.on('message', message => {
@@ -39,7 +41,7 @@ client.on('message', message => {
                 .catch(console.error);
             message.channel.send('Ese alaraco');
         }
-        
+
         // Hay un error pero no se rompe el bot
         if (m.includes('linasty')) {
             message.react('💦')
@@ -89,7 +91,7 @@ client.on('message', message => {
     if (timestamps.has(message.author.id)) {
         if (timestamps.has(message.author.id)) {
             const expirationTime = timestamps.get(message.author.id) + cooldownAmount;
-        
+
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
                 return message.reply(`Espera p bellaco. (Tiempo restante ${timeLeft.toFixed(1)})`);
