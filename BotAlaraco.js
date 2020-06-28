@@ -19,8 +19,13 @@ client.once('ready', () => {
 
 console.log('Bellaqueo');
 
-//TODO: YouTube texto, Spotify?, reaccionar a ciertas interacciones, saludar a alguien nuevo
-
+/* TODO:
+	YouTube texto
+	Spotify
+	Bug al reaccionar a ciertos comentarios
+	Comando $hydra "arg1" "arg2" "arg3" (Enviar a hydra esos args y que los reproduzca)
+	I NEED MORE IDEAS
+*/
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
         return;
@@ -35,14 +40,12 @@ client.on('message', message => {
             console.log(answer);
             message.channel.send(answer);
         } else if (m.includes('big mac') || m.includes('bigmac')) {
-            // Hay un error pero no se rompe el bot
             message.react('🍔')
                 .then(console.log)
                 .catch(console.error);
             message.channel.send('Ese alaraco');
         }
 
-        // Hay un error pero no se rompe el bot
         if (m.includes('linasty')) {
             message.react('💦')
                 .then( () => message.react('🧦') )
