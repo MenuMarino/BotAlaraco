@@ -32,7 +32,7 @@ client.on('message', message => {
     if (!message.content.startsWith('$')) {
         var m = message.content.toLowerCase();
         if (m.includes('hola') || m.includes('habla') || m == 'oe'){
-            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual']
+            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual', 'Habla ps rojo']
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
