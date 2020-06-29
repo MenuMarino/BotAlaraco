@@ -21,7 +21,6 @@ client.once('ready', () => {
 	YouTube texto
 	Spotify
 	Bug al reaccionar a ciertos comentarios
-	Comando $hydra "arg1" "arg2" "arg3" (Enviar a hydra esos args y que los reproduzca)
 	I NEED MORE IDEAS
 */
 client.on('message', message => {
