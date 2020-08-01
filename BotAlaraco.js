@@ -15,13 +15,22 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Estoy bellaco.');
+
+	// Status
+	// FIXME: Set status or set presence
+	client.user.setPresence({ activity: { name: 'with your mommy' }, status: 'idle' })
+  		.then(console.log)
+  		.catch(console.error);
+
+	//client.user.setStatus('dnd', 'This fixed the bug')
+	//	.then(console.log)
+  	//	.catch(console.error);
 });
 
 /* TODO:
 	YouTube texto
 	Spotify
 	Bug al reaccionar a ciertos comentarios
-	I NEED MORE IDEAS
 */
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
@@ -32,7 +41,7 @@ client.on('message', message => {
     if (!message.content.startsWith('$')) {
         var m = message.content.toLowerCase();
         if (m.includes('hola') || m.includes('habla') || m == 'oe'){
-            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual']
+            var answers = ['Habla ps chivo', 'En questas', 'owo']
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
@@ -55,6 +64,24 @@ client.on('message', message => {
                 .then(console.log)
                 .catch(console.error);
         }
+
+		if (message.author.id === '698567550363107388') {
+			message.react('🇸')
+                .then(console.log)
+                .catch(console.error);
+
+				message.react('🇮')
+	                .then(console.log)
+	                .catch(console.error);
+
+					message.react('🇲')
+		                .then(console.log)
+		                .catch(console.error);
+
+						message.react('🇵')
+			                .then(console.log)
+			                .catch(console.error);
+		}
     }
 
     //Comandos
