@@ -41,7 +41,11 @@ client.on('message', message => {
     if (!message.content.startsWith('$')) {
         var m = message.content.toLowerCase();
         if (m.includes('hola') || m.includes('habla') || m == 'oe'){
+<<<<<<< HEAD
             var answers = ['Habla ps chivo', 'En questas', 'owo']
+=======
+            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual', 'Habla ps rojo']
+>>>>>>> bbe125ec0fe4228b2174fc66a3546a2597e3545b
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
