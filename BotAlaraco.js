@@ -17,7 +17,8 @@ client.once('ready', () => {
     console.log('Estoy bellaco.');
 
 	// Status
-	// FIXME: Set status or set presence
+    // FIXME: Set status or set presence
+    // This causes the JSON in the terminal
 	client.user.setPresence({ activity: { name: 'with your mommy' }, status: 'idle' })
   		.then(console.log)
   		.catch(console.error);

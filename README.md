@@ -1,6 +1,10 @@
 # Bot Alaraco
 Bot alaraco para mi y los panas
 
+## Setup
+1. `npm install`
+2. `node BotAlaraco.js` o `npx nodemon BotAlaraco.js` (este hara que cuando se cambie un archivo, se reinicie automáticamente) 
+
 ## Contenido
 El prefijo que se requiere para ejecutar un comando es **$**.
 
