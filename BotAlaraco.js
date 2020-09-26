@@ -37,6 +37,8 @@ client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
         return;
 
+    console.log(message.author.id)
+
     //En caso alguien diga algo potencialmente alaraco.
     console.log(message.content)
     if (!message.content.startsWith('$')) {
@@ -104,7 +106,7 @@ client.on('message', message => {
 
     // Si el comando es enviado en DM y solo es para servers
     if (command.guildOnly && message.channel.type !== 'text') {
-		return message.reply('DMs no papi, quizás en un server');
+		return message.reply('En un server nomas carepene');
 	}
 
     //Cooldown stuff
