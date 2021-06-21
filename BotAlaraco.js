@@ -15,31 +15,27 @@ for (const file of commandFiles) {
 
 client.once('ready', () => {
     console.log('Estoy bellaco.');
+	client.user.setPresence({ activity: { name: 'with your mommy' }, status: 'idle' })
+  		.catch(console.error);
 });
 
-/* TODO:
-	YouTube texto
-	Spotify
-	Bug al reaccionar a ciertos comentarios
-	Comando $hydra "arg1" "arg2" "arg3" (Enviar a hydra esos args y que los reproduzca)
-	I NEED MORE IDEAS
-*/
 client.on('message', message => {
     if (message.author.bot || message.channel.name === 'hydra-song-requests' || message.channel.name === 'pancake')
         return;
+
+    console.log(message.author.id)
 
     //En caso alguien diga algo potencialmente alaraco.
     console.log(message.content)
     if (!message.content.startsWith('$')) {
         var m = message.content.toLowerCase();
         if (m.includes('hola') || m.includes('habla') || m == 'oe'){
-            var answers = ['Habla ps chivo', 'En questas', 'Hola ps homoSEXual']
+            var answers = ['Hola']
             var answer = answers[Math.floor(Math.random() * answers.length)];
             console.log(answer);
             message.channel.send(answer);
         } else if (m.includes('big mac') || m.includes('bigmac')) {
             message.react('🍔')
-                .then(console.log)
                 .catch(console.error);
             message.channel.send('Ese alaraco');
         }
@@ -47,15 +43,27 @@ client.on('message', message => {
         if (m.includes('linasty')) {
             message.react('💦')
                 .then( () => message.react('🧦') )
-                .then(console.log)
                 .catch(console.error);
         }
 
         if (m.includes('alaraco')) {
             message.react('🇦🇱')
-                .then(console.log)
                 .catch(console.error);
         }
+
+		if (message.author.id === '698567550363107388') {
+			message.react('🇸')
+                .catch(console.error);
+
+            message.react('🇮')
+                .catch(console.error);
+
+            message.react('🇲')
+                .catch(console.error);
+
+            message.react('🇵')
+                .catch(console.error);
+		}
     }
 
     //Comandos
@@ -77,7 +85,7 @@ client.on('message', message => {
 
     // Si el comando es enviado en DM y solo es para servers
     if (command.guildOnly && message.channel.type !== 'text') {
-		return message.reply('DMs no papi, quizás en un server');
+		return message.reply('En un server nomas carepene');
 	}
 
     //Cooldown stuff
@@ -95,7 +103,7 @@ client.on('message', message => {
 
             if (now < expirationTime) {
                 const timeLeft = (expirationTime - now) / 1000;
-                return message.reply(`Espera p bellaco. (Tiempo restante ${timeLeft.toFixed(1)})`);
+                return message.reply(`Espera ps bellaco. (Tiempo restante ${timeLeft.toFixed(1)})`);
             }
         }
     }
