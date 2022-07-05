@@ -4,7 +4,7 @@
   "description": "",
   "main": "BotAlaraco.js",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
+    "@discordjs/opus": "^0.8.0",
     "discord.js": "github:hydrabolt/discord.js",
     "discord.js-commando": "^0.10.0",
     "ffmpeg": "0.0.4",
